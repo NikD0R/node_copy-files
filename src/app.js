@@ -3,13 +3,13 @@
 const fs = require('fs');
 const path = require('path');
 
+const [file, dest] = process.argv.slice(2);
+
 if (process.argv.slice(2).length !== 2) {
   /* eslint-disable-next-line no-console */
   console.error('Provide source and destination');
-  return;
+  process.exit(0);
 }
-
-const [file, dest] = process.argv.slice(2);
 
 if (path.resolve(file) !== path.resolve(dest)) {
   fs.stat(file, (error, stats) => {
